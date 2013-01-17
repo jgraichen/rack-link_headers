@@ -20,21 +20,22 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-response.headers.link "rel", "http://abc.de/"
-response.headers.link "rss", "http://test.host/feed.xml"
+response.link "rel", "http://abc.de/"
+response.link "rss", "http://test.host/feed.xml"
 ```
 ```
-Link: <http://abc.de/> rel="rel", <http://test.host/feed.xml> rel="rss"
+response.headers["Link"]
+# => <http://abc.de/> rel="rel", <http://test.host/feed.xml> rel="rss"
 ```
 
 Manual set Link header will be overridden. All links can be
 accessed via `links`:
 
 ```ruby
-response.headers.link "rel", "http://abc.de/"
-response.headers.link "rss", "http://test.host/feed.xml"
+response.link "rel", "http://abc.de/"
+response.link "rss", "http://test.host/feed.xml"
 
-response.headers.links
+response.links
 # => [{:rel=>"rel", :url=>"http://abc.de/"}, {:rel=>"rss", :url=>"http://test.host/feed.xml"}]
 ```
 

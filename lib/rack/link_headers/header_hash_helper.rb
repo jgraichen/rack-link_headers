@@ -1,4 +1,4 @@
-require 'rack/utils'
+require 'rack/response'
 
 module Rack
   module LinkHeaders
@@ -26,4 +26,5 @@ module Rack
   end
 end
 
-Rack::Utils::HeaderHash.send :include, Rack::LinkHeaders::HeaderHashHelper
+Rack::Response.send :include, Rack::LinkHeaders::HeaderHashHelper
+Rack::Response::Helpers.send :include, Rack::LinkHeaders::HeaderHashHelper
