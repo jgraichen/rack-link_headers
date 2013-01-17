@@ -1,5 +1,4 @@
-# Rack::LinkHeaders
-[![Build Status](https://travis-ci.org/jgraichen/rack-link_headers.png?branch=master)](https://travis-ci.org/jgraichen/rack-link_headers)
+# Rack::LinkHeaders [![Build Status](https://travis-ci.org/jgraichen/rack-link_headers.png?branch=master)](https://travis-ci.org/jgraichen/rack-link_headers)
 
 Easy Link header management for rack responses.
 
