@@ -17,23 +17,24 @@ class HelperTest < MiniTest::Unit::TestCase
   end
 
   def test_link_writes_header
-    @response.link "search", "http://google.com/path?query=5#frag"
+    @response.link "http://google.com/path?query=5#frag", :rel => :search
 
-    assert_equal "<http://google.com/path?query=5#frag> rel=\"search\"", @response.headers["Link"]
+    assert_equal "<http://google.com/path?query=5#frag>; rel=\"search\"", @response.headers["Link"]
   end
 
   def test_multiple_link_writes_header
-    @response.link "search", "http://google.com/path?query=5#frag"
-    @response.link "rss", "http://test.host/feed.rss"
+    @response.link "http://google.com/path?query=5#frag", :rel => :search
+    @response.link "http://test.host/feed.rss", :rel => :rss, :type => "application/rss+xml"
 
-    assert_equal "<http://google.com/path?query=5#frag> rel=\"search\", <http://test.host/feed.rss> rel=\"rss\"", @response.headers["Link"]
+    assert_equal "<http://google.com/path?query=5#frag>; rel=\"search\", <http://test.host/feed.rss>; rel=\"rss\"; type=\"application/rss+xml\"", @response.headers["Link"]
   end
 
   def test_links
-    @response.link "search", "http://google.com/path?query=5#frag"
-    @response.link "rss", "http://test.host/feed.rss"
+    @response.link "http://google.com/path?query=5#frag", :rel => :search
+    @response.link "http://test.host/feed.rss", :rel => :rss, :type => "application/rss+xml"
 
-    assert_equal @response.links, [{:rel=>"search", :url=> "http://google.com/path?query=5#frag"}, {:rel=>"rss", :url=>"http://test.host/feed.rss"}]
+    assert_equal @response.links, [{:url => "http://google.com/path?query=5#frag", :params => {:rel => :search}},
+      {:url => "http://test.host/feed.rss", :params => {:rel => :rss, :type => "application/rss+xml"}}]
   end
 
   def test_overrides_manual_headers
@@ -41,9 +42,9 @@ class HelperTest < MiniTest::Unit::TestCase
 
     assert_equal "http://abc.de/", @response.headers["Link"]
 
-    @response.link "search", "http://google.com/path?query=5#frag"
+    @response.link "http://google.com/path?query=5#frag", :rel => :search
 
-    assert_equal "<http://google.com/path?query=5#frag> rel=\"search\"", @response.headers["Link"]
+    assert_equal "<http://google.com/path?query=5#frag>; rel=\"search\"", @response.headers["Link"]
   end
 
   if ENV["GEM"].to_s.include?('ad')

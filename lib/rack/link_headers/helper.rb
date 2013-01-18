@@ -10,12 +10,17 @@ module Rack
 
       module InstanceMethods
         # Add a new Link header to response headers. Requires
-        # a rel string and a URL. Does not escape or sanitize
-        # anything. Manual added Link headers will be
+        # a URL and a params hash. Does not escape or
+        # sanitize anything. Manual added Link headers will be
         # overridden.
-        def link(rel, url)
-          links << {:rel => rel.to_s, :url => url.to_s }
-          self["Link"] = links.to_a.map{|link| "<#{link[:url]}> rel=\"#{link[:rel]}\""}.join(', ')
+        def link(url, params = {})
+          links << {:url => url.to_s, :params => params}
+
+          self["Link"] = links.to_a.map do |link|
+            "<#{link[:url]}>" + link[:params].to_a.map do |k, v|
+              "; #{k}=\"#{v}\""
+            end.join
+          end.join(', ')
         end
 
         def links
