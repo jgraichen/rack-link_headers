@@ -3,7 +3,7 @@ require 'rack/response'
 module Rack
   module LinkHeaders
     # Helper for easy adding link headers to rack responses.
-    module HeaderHashHelper
+    module Helper
       def self.included(base)
         base.send :include, InstanceMethods
       end
@@ -26,5 +26,8 @@ module Rack
   end
 end
 
-Rack::Response.send :include, Rack::LinkHeaders::HeaderHashHelper
-Rack::Response::Helpers.send :include, Rack::LinkHeaders::HeaderHashHelper
+Rack::Response.send :include, Rack::LinkHeaders::Helper
+Rack::Response::Helpers.send :include, Rack::LinkHeaders::Helper
+
+ActionDispatch::Response.send :include, Rack::LinkHeaders::Helper if defined?(ActionDispatch::Response)
+ActionController::TestResponse.send :include, Rack::LinkHeaders::Helper if defined?(ActionController::TestResponse)

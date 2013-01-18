@@ -1,4 +1,4 @@
-require 'rack/link_headers/header_hash_helper'
+require 'rack/link_headers/helper'
 
 module Rack
   module LinkHeaders
