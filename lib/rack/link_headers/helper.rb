@@ -17,8 +17,8 @@ module Rack
           links << {:url => url.to_s, :params => params}
 
           self["Link"] = links.to_a.map do |link|
-            "<#{link[:url]}>" + link[:params].to_a.map do |k, v|
-              "; #{k}=\"#{v}\""
+            "<#{link[:url]}>" + link[:params].keys.sort.map do |k|
+              "; #{k}=\"#{link[:params][k]}\""
             end.join
           end.join(', ')
         end
