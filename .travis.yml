@@ -6,3 +6,7 @@ rvm:
 env:
   - GEM=ac
   - GEM=ap
+gemfiles:
+  - gemfiles/Gemfile.rails-3-1
+  - gemfiles/Gemfile.rails-3-2
+  - gemfiles/Gemfile.rails-head
