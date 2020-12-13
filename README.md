@@ -21,8 +21,8 @@ Or install it yourself as:
 ## Usage
 
 ```ruby
-response.link "http://abc.de/", :rel => :search
-response.link "http://test.host/feed.xml", :rel => :rss, :type => "application/rss+xml"
+response.link "http://abc.de/", rel: :search
+response.link "http://test.host/feed.xml", rel: :rss, type: "application/rss+xml"
 ```
 ```
 response.headers["Link"]
@@ -33,11 +33,16 @@ Manual set Link header will be overridden. All links can be
 accessed via `links`:
 
 ```ruby
-response.link "http://abc.de/", :rel => :search
-response.link "http://test.host/feed.xml", :rel => :rss, :type => "application/rss+xml"
+response.link "http://abc.de/", rel: :search
+response.link "http://test.host/feed.xml", rel: :rss, type: "application/rss+xml"
 
 response.links
-# => [{:url=>"http://abc.de/", :params=>{:ref=>:search}}, {:url=>"http://test.host/feed.xml", :params=>{:rel=>:rss, :type=>"application/rss+xml"}}]
+# => [
+#  {:url=>"http://abc.de/",
+#   :params=>{:ref=>:search}},
+#  {:url=>"http://test.host/feed.xml",
+#   :params=>{:rel=>:rss, :type=>"application/rss+xml"}}
+# ]
 ```
 
 ## Contributing
