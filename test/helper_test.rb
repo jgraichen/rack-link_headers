@@ -2,8 +2,12 @@
 
 require 'minitest/autorun'
 
-require 'action_dispatch' if ENV['GEM'].to_s.include?('ad')
-if ENV['GEM'].to_s.include?('ac')
+if ENV['GEM'].to_s.include?('action_dispatch')
+  # For testing ActionDispatch::Response
+  require 'action_dispatch'
+end
+
+if ENV['GEM'].to_s.include?('action_controller')
   require 'action_controller'
   require 'action_controller/test_case'
 end
@@ -46,13 +50,13 @@ class HelperTest < MiniTest::Unit::TestCase
     assert_equal '<http://google.com/path?query=5#frag>; rel="search"', @response.headers['Link']
   end
 
-  if ENV['GEM'].to_s.include?('ad')
+  if ENV['GEM'].to_s.include?('action_dispatch')
     def test_dyn_inject_action_dispatch_response
       assert ActionDispatch::Response.new.respond_to? :link
     end
   end
 
-  if ENV['GEM'].to_s.include?('ac')
+  if ENV['GEM'].to_s.include?('action_controller')
     def test_dyn_inject_action_controller_test_response
       assert ActionController::TestResponse.new.respond_to? :link
     end

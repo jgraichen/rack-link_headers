@@ -17,8 +17,8 @@ jobs:
           - rails_6.1.gemfile
           - rails_5.2.gemfile
         env_GEM:
-          - ac
-          - ap
+          - action_controller
+          - action_dispatch
         include:
           - ruby: "2.7"
             gemfile: rack_1.6.gemfile
