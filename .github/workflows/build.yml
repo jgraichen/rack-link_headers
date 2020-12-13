@@ -12,26 +12,18 @@ jobs:
           - "2.6"
           - "2.5"
         gemfile:
-          - rails_5.2.gemfile
-          - rails_6.0.gemfile
-          - rails_6.1.gemfile
-          - rails_5.2.gemfile
-        env_GEM:
-          - action_controller
-          - action_dispatch
+          - rack_1.6.gemfile
+          - rack_2.2.gemfile
         include:
           - ruby: "2.7"
-            gemfile: rack_1.6.gemfile
-          - ruby: "2.7"
-            gemfile: rack_2.2.gemfile
+            gemfile: actionpack_6.1.gemfile
+            enable_actionpack: true
           - ruby: "2.6"
-            gemfile: rack_1.6.gemfile
-          - ruby: "2.6"
-            gemfile: rack_2.2.gemfile
+            gemfile: actionpack_6.0.gemfile
+            enable_actionpack: true
           - ruby: "2.5"
-            gemfile: rack_1.6.gemfile
-          - ruby: "2.5"
-            gemfile: rack_2.2.gemfile
+            gemfile: actionpack_5.2.gemfile
+            enable_actionpack: true
       fail-fast: false
 
     steps:
@@ -56,7 +48,7 @@ jobs:
           bundle config without development
           bundle install --jobs=4 --retry=3
 
-      - name: Run rspec
+      - name: Run rake test
         env:
-          GEM: ${{ matrix.env_GEM }}
+          ACTIONPACK: ${{ matrix.enable_actionpack }}
         run: bundle exec rake test
