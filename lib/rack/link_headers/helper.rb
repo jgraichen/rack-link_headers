@@ -26,7 +26,7 @@ module Rack
         end
 
         def links
-          @__links ||= []
+          @links ||= []
         end
       end
     end

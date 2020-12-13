@@ -6,6 +6,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'my-rubocop', github: 'jgraichen/my-rubocop'
+gem 'rake-release', '~> 1.0'
 
 group :development do
   gem 'appraisal'
