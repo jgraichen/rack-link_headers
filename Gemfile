@@ -8,5 +8,5 @@ gemspec
 gem 'my-rubocop', github: 'jgraichen/my-rubocop'
 
 group :development do
-  gem 'actionpack', require: false
+  gem 'appraisal'
 end

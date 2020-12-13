@@ -1,0 +1,61 @@
+name: Build
+on: [push]
+jobs:
+  test:
+    name: Ruby ${{ matrix.ruby }} / ${{ matrix.gemfile }}
+    runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        ruby:
+          - "2.7"
+          - "2.6"
+          - "2.5"
+        gemfile:
+          - rails_5.2.gemfile
+          - rails_6.0.gemfile
+          - rails_6.1.gemfile
+          - rails_5.2.gemfile
+        env_GEM:
+          - ac
+          - ap
+        include:
+          - ruby: "2.7"
+            gemfile: rack_1.6.gemfile
+          - ruby: "2.7"
+            gemfile: rack_2.2.gemfile
+          - ruby: "2.6"
+            gemfile: rack_1.6.gemfile
+          - ruby: "2.6"
+            gemfile: rack_2.2.gemfile
+          - ruby: "2.5"
+            gemfile: rack_1.6.gemfile
+          - ruby: "2.5"
+            gemfile: rack_2.2.gemfile
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+      - uses: actions/cache@v1
+        with:
+          path: vendor
+          key: v1-ruby-${{ matrix.ruby }}-gemfile-${{ matrix.gemfile }}
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install --quiet --yes libsqlite3-dev
+
+      - name: Run bundle install
+        run: |
+          bundle config gemfile "gemfiles/${{ matrix.gemfile }}"
+          bundle config path "$(pwd)/vendor/bundle"
+          bundle config without development
+          bundle install --jobs=4 --retry=3
+
+      - name: Run rspec
+        env:
+          GEM: ${{ matrix.env_GEM }}
+        run: bundle exec rake test
