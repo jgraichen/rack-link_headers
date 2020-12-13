@@ -5,20 +5,22 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 require 'rack/link_headers/version'
 
-Gem::Specification.new do |gem|
-  gem.name          = 'rack-link_headers'
-  gem.version       = Rack::LinkHeaders::VERSION
-  gem.authors       = ['Jan Graichen']
-  gem.email         = ['jg@altimos.de']
-  gem.description   = 'Easy Link header management for rack responses.'
-  gem.summary       = 'Easy Link header management for rack responses.'
-  gem.homepage      = ''
-  gem.license       = 'MIT'
+Gem::Specification.new do |spec|
+  spec.name          = 'rack-link_headers'
+  spec.version       = Rack::LinkHeaders::VERSION
+  spec.authors       = ['Jan Graichen']
+  spec.email         = ['jgraichen@altimos.de']
+  spec.summary       = 'Easy Link header management for rack responses.'
+  spec.homepage      = ''
+  spec.license       = 'MIT'
 
-  gem.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
-  gem.executables   = gem.files.grep(%r{^bin/}).map {|f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.require_paths = ['lib']
+  spec.files         = Dir['**/*'].grep(%r{^(
+    (bin|lib|test|spec|features)/|
+    (.*\.gemspec|.*LICENSE.*|.*README.*|.*CHANGELOG.*)
+  )}x)
+  spec.executables   = spec.files.grep(%r{^bin/}) {|f| File.basename(f) }
+  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
+  spec.require_paths = ['lib']
 
-  gem.add_runtime_dependency 'rack'
+  spec.add_runtime_dependency 'rack'
 end
