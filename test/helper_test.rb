@@ -7,9 +7,6 @@ ACTIONPACK = !ENV['ACTIONPACK'].to_s.empty?
 if ACTIONPACK
   # For testing ActionDispatch::Response
   require 'action_dispatch'
-
-  require 'action_controller'
-  require 'action_controller/test_case'
 end
 
 require 'rack-link_headers'
@@ -53,10 +50,6 @@ class HelperTest < MiniTest::Unit::TestCase
   if ACTIONPACK
     def test_dyn_inject_action_dispatch_response
       assert ActionDispatch::Response.new.respond_to? :link
-    end
-
-    def test_dyn_inject_action_controller_test_response
-      assert ActionController::TestResponse.new.respond_to? :link
     end
   end
 end
