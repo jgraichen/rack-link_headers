@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rack/response'
+require 'rack'
 
 module Rack
   module LinkHeaders

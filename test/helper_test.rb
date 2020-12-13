@@ -8,7 +8,6 @@ if ENV['GEM'].to_s.include?('ac')
   require 'action_controller/test_case'
 end
 
-require 'rack/response'
 require 'rack-link_headers'
 
 class HelperTest < MiniTest::Unit::TestCase
