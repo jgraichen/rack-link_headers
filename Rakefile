@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'bundler/gem_tasks'
+require 'rake/release/task'
 require 'rake/testtask'
 
 Rake::TestTask.new do |t|
@@ -10,3 +10,7 @@ Rake::TestTask.new do |t|
 end
 
 task default: :test
+
+Rake::Release::Task.new do |spec|
+  spec.sign_tag = true
+end
