@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rack/response'
 
 module Rack
@@ -14,9 +16,9 @@ module Rack
         # sanitize anything. Manual added Link headers will be
         # overridden.
         def link(url, params = {})
-          links << {:url => url.to_s, :params => params}
+          links << {url: url.to_s, params: params}
 
-          self["Link"] = links.to_a.map do |link|
+          self['Link'] = links.to_a.map do |link|
             "<#{link[:url]}>" + link[:params].keys.sort.map do |k|
               "; #{k}=\"#{link[:params][k]}\""
             end.join
@@ -31,8 +33,12 @@ module Rack
   end
 end
 
-Rack::Response.send :include, Rack::LinkHeaders::Helper
-Rack::Response::Helpers.send :include, Rack::LinkHeaders::Helper
+Rack::Response.include Rack::LinkHeaders::Helper
+Rack::Response::Helpers.include Rack::LinkHeaders::Helper
 
-ActionDispatch::Response.send :include, Rack::LinkHeaders::Helper if defined?(ActionDispatch::Response)
-ActionController::TestResponse.send :include, Rack::LinkHeaders::Helper if defined?(ActionController::TestResponse)
+if defined?(ActionDispatch::Response)
+  ActionDispatch::Response.include Rack::LinkHeaders::Helper
+end
+if defined?(ActionController::TestResponse)
+  ActionController::TestResponse.include Rack::LinkHeaders::Helper
+end

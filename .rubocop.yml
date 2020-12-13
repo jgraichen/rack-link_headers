@@ -1,0 +1,13 @@
+inherit_gem:
+  my-rubocop: default.yml
+
+AllCops:
+  TargetRubyVersion: 2.5
+
+Metrics/LineLength:
+  Exclude:
+    - test/**/*_test.rb
+
+Naming/FileName:
+  Exclude:
+    - lib/rack-link_headers.rb
