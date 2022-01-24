@@ -9,7 +9,7 @@ module Rack
       STAGE = nil
 
       def self.to_s
-        [MAJOR, MINOR, PATCH, STAGE].reject(&:nil?).join '.'
+        [MAJOR, MINOR, PATCH, STAGE].compact.join '.'
       end
     end
   end

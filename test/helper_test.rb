@@ -34,7 +34,7 @@ class HelperTest < MiniTest::Unit::TestCase
     @response.link 'http://test.host/feed.rss', rel: :rss, type: 'application/rss+xml'
 
     assert_equal @response.links, [{url: 'http://google.com/path?query=5#frag', params: {rel: :search}},
-                                   {url: 'http://test.host/feed.rss', params: {rel: :rss, type: 'application/rss+xml'}}]
+                                   {url: 'http://test.host/feed.rss', params: {rel: :rss, type: 'application/rss+xml'}},]
   end
 
   def test_overrides_manual_headers
