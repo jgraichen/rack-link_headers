@@ -13,8 +13,9 @@ jobs:
           - "3.0"
           - "2.7"
         gemfile:
-          - rack_1.6.gemfile
-          - rack_2.2.gemfile
+          - rack_1.gemfile
+          - rack_2.gemfile
+          - rack_3.gemfile
         include:
           - ruby: "3.2"
             gemfile: actionpack_7.0.gemfile
@@ -27,12 +28,6 @@ jobs:
             enable_actionpack: true
           - ruby: "2.7"
             gemfile: actionpack_6.1.gemfile
-            enable_actionpack: true
-          - ruby: "2.6"
-            gemfile: actionpack_6.0.gemfile
-            enable_actionpack: true
-          - ruby: "2.5"
-            gemfile: actionpack_5.2.gemfile
             enable_actionpack: true
       fail-fast: false
 
