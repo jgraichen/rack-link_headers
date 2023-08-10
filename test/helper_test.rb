@@ -11,7 +11,7 @@ end
 
 require 'rack-link_headers'
 
-class HelperTest < MiniTest::Unit::TestCase
+class HelperTest < Minitest::Test
   def setup
     @response = Rack::Response.new
   end
@@ -26,15 +26,18 @@ class HelperTest < MiniTest::Unit::TestCase
     @response.link 'http://google.com/path?query=5#frag', rel: :search
     @response.link 'http://test.host/feed.rss', rel: :rss, type: 'application/rss+xml'
 
-    assert_equal '<http://google.com/path?query=5#frag>; rel="search", <http://test.host/feed.rss>; rel="rss"; type="application/rss+xml"', @response.headers['Link']
+    assert_equal '<http://google.com/path?query=5#frag>; rel="search", <http://test.host/feed.rss>; rel="rss"; type="application/rss+xml"',
+      @response.headers['Link']
   end
 
   def test_links
     @response.link 'http://google.com/path?query=5#frag', rel: :search
     @response.link 'http://test.host/feed.rss', rel: :rss, type: 'application/rss+xml'
 
-    assert_equal @response.links, [{url: 'http://google.com/path?query=5#frag', params: {rel: :search}},
-                                   {url: 'http://test.host/feed.rss', params: {rel: :rss, type: 'application/rss+xml'}},]
+    assert_equal @response.links, [
+      {url: 'http://google.com/path?query=5#frag', params: {rel: :search}},
+      {url: 'http://test.host/feed.rss', params: {rel: :rss, type: 'application/rss+xml'}},
+    ]
   end
 
   def test_overrides_manual_headers
