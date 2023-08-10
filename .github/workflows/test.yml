@@ -63,6 +63,9 @@ jobs:
     name: rubocop
     runs-on: ubuntu-20.04
 
+    env:
+      BUNDLE_WITHOUT: development
+
     steps:
       - uses: actions/checkout@master
       - uses: ruby/setup-ruby@v1
@@ -70,7 +73,6 @@ jobs:
           ruby-version: 3.2
           bundler-cache: True
         env:
-          BUNDLE_WITHOUT: development
           BUNDLE_JOBS: 4
           BUNDLE_RETRY: 3
 
