@@ -10,7 +10,7 @@ Easy Link header management for rack responses.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'rack-link_headers', '~> 2.3'
+gem 'rack-link_headers', '~> 2.4'
 ```
 
 And then execute:
