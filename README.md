@@ -9,15 +9,21 @@ Easy Link header management for rack responses.
 
 Add this line to your application's Gemfile:
 
-    gem 'rack-link_headers'
+```ruby
+gem 'rack-link_headers', '~> 2.3'
+```
 
 And then execute:
 
-    $ bundle
+```console
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install rack-link_headers
+```console
+gem install rack-link_headers
+```
 
 ## Usage
 
@@ -25,7 +31,8 @@ Or install it yourself as:
 response.link "http://abc.de/", rel: :search
 response.link "http://test.host/feed.xml", rel: :rss, type: "application/rss+xml"
 ```
-```
+
+```ruby
 response.headers["Link"]
 # => <http://abc.de/>; rel="rel", <http://test.host/feed.xml>; rel="rss"; type="application/rss+xml"
 ```
@@ -60,4 +67,4 @@ response.links
 
 [MIT License](http://www.opensource.org/licenses/mit-license.php)
 
-Copyright (c) 2013, Jan Graichen
+Copyright © 2023, Jan Graichen
