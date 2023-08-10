@@ -1,7 +1,7 @@
 # Rack::LinkHeaders
 
 [![Gem Version](https://img.shields.io/gem/v/rack-link_headers?logo=ruby)](https://rubygems.org/gems/rack-link_headers)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/jgraichen/rack-link_headers/test?logo=github)](https://github.com/jgraichen/rack-link_headers/actions?query=branch%3Amain)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/jgraichen/rack-link_headers/test.yml?logo=github)](https://github.com/jgraichen/rack-link_headers/actions/workflows/test.yml)
 
 Easy Link header management for rack responses.
 
