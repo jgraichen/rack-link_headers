@@ -5,7 +5,7 @@ module Rack
     module VERSION
       MAJOR = 2
       MINOR = 4
-      PATCH = 0
+      PATCH = 1
       STAGE = nil
 
       def self.to_s
