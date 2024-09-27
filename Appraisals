@@ -19,3 +19,11 @@ end
 appraise 'actionpack-7.0' do
   gem 'actionpack', '~> 7.0.0', require: false
 end
+
+appraise 'actionpack-7.1' do
+  gem 'actionpack', '~> 7.1.0', require: false
+end
+
+appraise 'actionpack-7.2' do
+  gem 'actionpack', '~> 7.2.0', require: false
+end

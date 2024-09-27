@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Jan Graichen']
   spec.email         = ['jgraichen@altimos.de']
   spec.summary       = 'Easy Link header management for rack responses.'
-  spec.homepage      = ''
+  spec.homepage      = 'https://github.com/jgraichen/rack-link_headers'
   spec.license       = 'MIT'
 
   spec.required_ruby_version = '>= 2.7.0'

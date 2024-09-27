@@ -8,6 +8,7 @@ jobs:
     strategy:
       matrix:
         ruby:
+          - "3.3"
           - "3.2"
           - "3.1"
           - "3.0"
@@ -17,8 +18,11 @@ jobs:
           - rack_2.gemfile
           - rack_3.gemfile
         include:
+          - ruby: "3.3"
+            gemfile: actionpack_7.2.gemfile
+            enable_actionpack: true
           - ruby: "3.2"
-            gemfile: actionpack_7.0.gemfile
+            gemfile: actionpack_7.1.gemfile
             enable_actionpack: true
           - ruby: "3.1"
             gemfile: actionpack_7.0.gemfile
@@ -65,7 +69,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2
+          ruby-version: "3.2"
           bundler-cache: True
         env:
           BUNDLE_JOBS: 4
