@@ -7,7 +7,7 @@ gemspec
 gem 'rake'
 gem 'rake-release', '~> 1.0'
 
-gem 'rubocop-config', github: 'jgraichen/rubocop-config', ref: '64e4c81870e869a3bdd9ea3c49fd042b321dbfbd'
+gem 'rubocop-config', github: 'jgraichen/rubocop-config', ref: '9f3e5cd0e519811a7f615f265fca81a4f4e843b9'
 
 gem 'minitest'
 
