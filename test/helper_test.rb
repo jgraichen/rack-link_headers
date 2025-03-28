@@ -4,6 +4,9 @@ require 'minitest/autorun'
 
 ACTIONPACK = !ENV['ACTIONPACK'].to_s.empty?
 
+# Workaround for older Rails versions
+require 'logger'
+
 if ACTIONPACK
   # For testing ActionDispatch::Response
   require 'action_dispatch'
